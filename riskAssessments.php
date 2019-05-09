@@ -30,7 +30,7 @@ class riskAssessments extends reviewableAssessments
 	{
 		# Return the SQL
 		return $sql = "
-			  /* Domain-specific fields to be added here, if any */
+			  /* Domain-specific fields */
 			  
 			  `contactName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Name of a personal contact',
 			  `contactAddress` text COLLATE utf8_unicode_ci COMMENT 'Address of personal contact',
@@ -42,6 +42,7 @@ class riskAssessments extends reviewableAssessments
 			  `organicMaterial` enum('Yes','No') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Soil and/or plant material',
 			  `fcoWebsiteChecked` enum('Yes','No') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'FCO website',
 			  `fcoAdviseAgainst` enum('No','Yes') COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'FCO advice',
+			  `insurance` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT 'Insurance',
 			  `stayingAddress` text COLLATE utf8_unicode_ci COMMENT 'Local address',
 			  `stayingPhone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Local phone',
 			  `stayingMobile` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Local mobile',
@@ -190,7 +191,7 @@ class riskAssessments extends reviewableAssessments
 		$template = "\n<p><img src=\"/images/icons/information.png\" alt=\"\" class=\"icon\" /> You can click on {[[SAVE]]} at any time.</p>" . "\n{[[PROBLEMS]]}" . $template . "\n<p>{[[SUBMIT]]} OR you can {[[SAVE]]}</p>";
 		
 		# Define the database fields that are NULLable; this is done manually so that the Save & Continue button is possible
-		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'stayingAddress', 'stayingPhone', 'travellingWith', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', );
+		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', );
 		
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
@@ -378,6 +379,15 @@ class riskAssessments extends reviewableAssessments
 				</td>
 			</tr>
 		</table>
+		
+		<h4>Insurance</h4>
+		<div class="graybox">
+		<p>If you are an undergraduate student travelling abroad (and not to your home country), you MUST obtain your own travel insurance cover.</p>
+		<p>Please provide the name of your insurer and policy number in the text box below.</p>
+		<p>If you are yet to obtain travel insurance, please type \'YES\' in the box to confirm that you will arrange for appropriate cover and send the name of your insurer and policy number to the DSO by e-mail as soon as it is available. You MUST provide this information before travelling.</p>
+		<p>If you are a member of staff or a graduate student travelling abroad, you MUST <a href="https://www.insurance.admin.cam.ac.uk/travel-insurance/application-process" target="_blank" title="[Link opens in a new window]">register your travel plans with the University</a> so that they can provide travel insurance cover.</p>
+		<p>{insurance}</p>
+		</div>
 		
 		<h4>Local contact details (e.g. where you are staying)</h4>
 		
