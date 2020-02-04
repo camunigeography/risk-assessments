@@ -546,7 +546,7 @@ class riskAssessments extends reviewableAssessments
 		$html .= '
 			<h3 class="pagebreak">Confirmation</h3>
 			<div class="graybox">
-				<p>All accidents, however trivial they may seem, should be reported to the Safety Office. I agree that if an accident or incident occurs during the work covered by this Risk Assessment, I will inform the Safety Office and ' . $this->settings['directorDescription'] . ' using a <a href="http://www.safety.admin.cam.ac.uk/publications/hsd020e-accident-dangerous-occurrence-and-incident-report-form" target="_blank">Accident, Dangerous Occurrence and Incident Report Form</a>.</p>
+				<p>All accidents, however trivial they may seem, should be reported to the Safety Office. I agree that if an accident or incident occurs during the work covered by this Risk Assessment, I will inform the Safety Office and ' . $this->settings['directorDescription'] . ' using an <a href="https://portal.assessweb.co.uk/portal_login.asp?c=359372&amp;r=npQF1rXDLYvDvDLORJDX&amp;f=Jh1wOrlE&amp;i=129&amp;a=nzCIwDeJ1uQKV5J" target="_blank">Accident/Incident Report Form</a>.</p>
 				<p><strong>Tick to confirm: {confirmation}</strong></p>
 			</div>
 		';
