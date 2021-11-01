@@ -36,6 +36,10 @@ class riskAssessments extends reviewableAssessments
 			  `contactAddress` text COLLATE utf8mb4_unicode_ci COMMENT 'Address of personal contact',
 			  `contactPhone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Phone number of personal contact',
 			  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Country',
+			  `originCountry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Country of origin',
+			  `travelModes` set('Car','Bus','Rail','Boat','Plane') COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Travel mode(s)',
+			  `travelPolicyAwareness` enum('Yes','No') COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Are you aware of the Department Travel Policy?',
+			  `travelPolicyAccountedFor` enum('Yes','No') COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Have you taken account of the Travel Policy when making your plans for this trip?',
 			  `place` text COLLATE utf8mb4_unicode_ci COMMENT 'Where are you going',
 			  `activity` text COLLATE utf8mb4_unicode_ci COMMENT 'What will you be doing there',
 			  `when` text COLLATE utf8mb4_unicode_ci COMMENT 'When will you be there',
@@ -191,7 +195,7 @@ class riskAssessments extends reviewableAssessments
 		$template = "\n<p><img src=\"/images/icons/information.png\" alt=\"\" class=\"icon\" /> You can click on {[[SAVE]]} at any time.</p>" . "\n{[[PROBLEMS]]}" . $template . "\n<p>{[[SUBMIT]]} OR you can {[[SAVE]]}</p>";
 		
 		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
-		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation', );
+		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation', );
 		
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
@@ -209,6 +213,7 @@ class riskAssessments extends reviewableAssessments
 			'seniorPerson' 					=> $seniorPerson['widget'],
 			'contactAddress'				=> array ('rows' => 4, 'cols' => 50, ),
 			'country'						=> array ('type' => 'select', 'values' => $this->getCountries (), ),
+			'originCountry'					=> array ('type' => 'select', 'values' => $this->getCountries (), ),
 			'place'							=> array ('rows' => 4, 'cols' => 50, ),
 			'activity'						=> array ('rows' => 4, 'cols' => 50, ),
 			'when'							=> array ('cols' => 50, ),
@@ -341,12 +346,28 @@ class riskAssessments extends reviewableAssessments
 			</tr>
 		</table>
 		
-		<h4>Details of fieldwork</h4>
+		<h4>Details of fieldwork/travel</h4>
 		
 		<table class="graybox regulated">
 			<tr>
 				<td>What country are you going to?</td>
 				<td>{country}</td>
+			</tr>
+			<tr>
+				<td>What is your country of origin? (E.g. where are you travelling from).</td>
+				<td>{originCountry}</td>
+			</tr>
+			<tr>
+				<td>What mode(s) of travel will you be using?</td>
+				<td>{travelModes}</td>
+			</tr>
+			<tr>
+				<td>Are you aware of the <a href="/general/sustainability/travelpolicy/" target="_blank">Department Travel Policy</a>?</td>
+				<td>{travelPolicyAwareness}</td>
+			</tr>
+			<tr>
+				<td>Have you taken account of the Travel Policy when making your plans for this trip?</td>
+				<td>{travelPolicyAccountedFor}</td>
 			</tr>
 			<tr>
 				<td>Where are you going?</td>
