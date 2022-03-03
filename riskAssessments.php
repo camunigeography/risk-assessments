@@ -406,7 +406,7 @@ class riskAssessments extends reviewableAssessments
 		<p>If you are an undergraduate student travelling abroad (and not to your home country), you MUST obtain your own travel insurance cover.</p>
 		<p>Please provide the name of your insurer and policy number in the text box below.</p>
 		<p>If you are yet to obtain travel insurance, please type \'YES\' in the box to confirm that you will arrange for appropriate cover and send the name of your insurer and policy number to the DSO by e-mail as soon as it is available. You MUST provide this information before travelling.</p>
-		<p>If you are a member of staff or a graduate student travelling abroad, you MUST <a href="https://www.insurance.admin.cam.ac.uk/travel-insurance/application-process" target="_blank" title="[Link opens in a new window]">register your travel plans with the University</a> so that they can provide travel insurance cover.</p>
+		<p>If you are a member of staff or a graduate student travelling abroad, you MUST <a href="https://www.insurance.admin.cam.ac.uk/insurance-guidance/travel-insurance/travel-insurance-application-process-all-students-and-employees" target="_blank" title="[Link opens in a new window]">register your travel plans with the University</a> so that they can provide travel insurance cover.</p>
 		<p>{insurance}</p>
 		</div>
 		
