@@ -52,6 +52,8 @@ class riskAssessments extends reviewableAssessments
 			  `stayingMobile` varchar(255) DEFAULT NULL COMMENT 'Local mobile',
 			  `travellingWith` text COMMENT 'Travelling with',
 			  `advicePerson` text COMMENT 'Taken advice',
+			  `riskChartChecked` enum('Yes') DEFAULT NULL COMMENT 'Risk chart checked',
+			  `riskLevel` enum('Low', 'Medium', 'High') DEFAULT NULL COMMENT 'Self-assessed risk categorisation',
 			  `hazard1_description` text,
 			  `hazard1_risks` text,
 			  `hazard1_likelihood` enum('','Low','Medium','High') DEFAULT NULL,
@@ -195,7 +197,7 @@ class riskAssessments extends reviewableAssessments
 		$template = "\n<p><img src=\"/images/icons/information.png\" alt=\"\" class=\"icon\" /> You can click on {[[SAVE]]} at any time.</p>" . "\n{[[PROBLEMS]]}" . $template . "\n<p>{[[SUBMIT]]} OR you can {[[SAVE]]}</p>";
 		
 		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
-		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation', );
+		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'riskChartChecked', 'riskLevel', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation', );
 		
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
@@ -432,6 +434,14 @@ class riskAssessments extends reviewableAssessments
 		</table>
 		
 		<h3 class="pagebreak">Section B &#8211; Personal risk assessment</h3>
+		
+		<hr />
+		<p class="right"><a class="noautoicon" href="/safety/riskcategorisation.pdf" target="_blank"><img src="/safety/riskcategorisation.png" alt="Risk Categorisation Table" title="[Link opens in a new tab]" border="0" width="300" height="130" /><br />Risk Categorisation Table<br />[Link opens in a new tab]</a></p>
+		<p>Please use the <a href="/safety/riskcategorisation.pdf" target="_blank">Risk Categorisation Table</a> [link opens in a new tab] to assess your proposed activity and determine the categorisation of risk as either Low, Medium or High. You will be asked to confirm your determination in the following questions on the form.</p>
+		<p>Have you reviewed the Risk Categorisation Table?<br />{riskChartChecked}</p>
+		<p>What is your self-assessed risk categorisation?<br />{riskLevel}</p>
+		<hr />
+		
 		' . $watermark . '
 		<p>You should consider the hazards you might encounter (e.g. busy roads, dark streets, cliffs, deep or running water); the risks associated with them (e.g. road collisions, being attacked, falling, drowning or being swept away); and your measures for minimising or avoiding these risks.</p>
 		
