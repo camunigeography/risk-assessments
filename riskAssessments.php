@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 # Class implementing a risk assessment system
 require_once ('reviewable-assessments/reviewableAssessments.php');
@@ -9,12 +9,13 @@ class riskAssessments extends reviewableAssessments
 	{
 		# Add implementation defaults
 		$defaults = array (
-			'applicationName'		=> 'Risk assessments',
-			'database'				=> 'riskassessments',
-			'description'			=> 'risk assessment',
-			'descriptionPlural'		=> 'risk assessments',
-			'directorDescription'	=> 'Departmental Safety Officer',
-			'stage2Info'			=> 'customs/insurance information',
+			'applicationName'			=> 'Risk assessments',
+			'database'					=> 'riskassessments',
+			'description'				=> 'risk assessment',
+			'descriptionPlural'			=> 'risk assessments',
+			'directorDescription'		=> 'Departmental Safety Officer',
+			'stage2Info'				=> 'customs/insurance information',
+			'listingAdditionalFields'	=> array ('country', 'when'),
 		);
 		
 		# Merge in the default defaults
