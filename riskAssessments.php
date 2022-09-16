@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 # Class implementing a risk assessment system
 require_once ('reviewable-assessments/reviewableAssessments.php');
