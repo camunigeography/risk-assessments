@@ -32,7 +32,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Function to define the asssessment form template
-	public function formTemplateLocal ($data, $watermark)
+	public function form_default ($data, $watermark)
 	{
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
@@ -295,7 +295,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Overrideable function to amend the main form attributes
-	public function formMainAttributes ($formMainAttributes)
+	public function form_default_mainAttributes ($formMainAttributes)
 	{
 		$formMainAttributes['cols'] = 25;
 		$formMainAttributes['rows'] = 3;
@@ -308,7 +308,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Function to add elements to the dataBinding
-	public function formDataBindingAttributes ($dataBindingAttributes, $data)
+	public function form_default_dataBindingAttributes ($dataBindingAttributes, $data)
 	{
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
@@ -359,7 +359,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Overrideable function to set the required fields for the local section dataBinding
-	public function formLocalRequiredFields ($formLocalRequiredFields, $data)
+	public function form_default_localRequiredFields ($formLocalRequiredFields, $data)
 	{
 		# Ignore (reset) the standard definition (all fields, with ...Details handling)
 		$formLocalRequiredFields = array ();
@@ -379,7 +379,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Overrideable function to amend the exclude fields for the local section dataBinding
-	public function formLocalExcludeFields ($localExcludeFields, $data)
+	public function form_default_localExcludeFields ($localExcludeFields, $data)
 	{
 		# Determine fields to exclude
 		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
@@ -401,7 +401,7 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	# Overrideable function to enable form validation rules to be added
-	public function formValidationRules ($form, $data)
+	public function form_default_validationRules ($form, $data)
 	{
 		# Chained validation for the hazard/equipment matrix and customs/insurance
 		for ($i = 1; $i <= $this->hazardRows; $i++) {
