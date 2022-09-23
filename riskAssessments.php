@@ -31,153 +31,6 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	
-	# Overrideable function to amend the main form attributes
-	public function formMainAttributes ($formMainAttributes)
-	{
-		$formMainAttributes['cols'] = 25;
-		$formMainAttributes['rows'] = 3;
-		//$formMainAttributes['size'] = 25;
-		//$formMainAttributes['picker'] = true;
-		
-		# Return modified version
-		return $formMainAttributes;
-	}
-	
-	
-	# Function to add elements to the dataBinding
-	public function formDataBindingAttributes ($dataBindingAttributes, $data)
-	{
-		# Set whether the form should include the customs/insurance fields
-		$stage2InfoRequired = ($data['stage2InfoRequired']);
-		
-		# Add to the attributes
-		$dataBindingAttributes += array (
-			'country'						=> array ('type' => 'select', 'values' => $this->getCountries (), ),
-			'originCountry'					=> array ('type' => 'select', 'values' => $this->getCountries (), ),
-			'place'							=> array ('rows' => 4, 'cols' => 50, ),
-			'activity'						=> array ('rows' => 4, 'cols' => 50, ),
-			'when'							=> array ('cols' => 50, ),
-			'organicMaterial'				=> array ('type' => 'radiobuttons', 'values' => array ('No' => 'No', 'Yes' => 'Yes, and I will obtain a foreign soils licence held by the Department and will comply with all relevant regulations.'), ),
-			'fcoWebsiteChecked'				=> array ('type' => 'radiobuttons', ),
-			'fcoAdviseAgainst'				=> array ('type' => 'radiobuttons', 'values' => array ('No' => 'No', 'Yes' => 'Yes - see note below'), ),
-			'stayingAddress'				=> array ('rows' => 4, 'cols' => 50, ),
-			'travellingWith'				=> array ('rows' => 5, 'cols' => 50, ),
-			'hazard1_description'			=> array ('default' => 'Travel', 'editable' => false, ),
-			'customsCountry1'				=> array ('type' => 'select', 'values' => $this->getCountries (), 'required' => $stage2InfoRequired, ),
-			'customsDocument1'				=> array ('rows' => 4, 'cols' => 50, 'required' => $stage2InfoRequired, ),
-			'customsCountry2'				=> array ('type' => 'select', 'values' => $this->getCountries (), ),
-			'customsDocument2'				=> array ('rows' => 4, 'cols' => 50, ),
-			'customsCountry3'				=> array ('type' => 'select', 'values' => $this->getCountries (), ),
-			'customsDocument3'				=> array ('rows' => 4, 'cols' => 50, ),
-			'healthInsuranceProvider'		=> array ('rows' => 3, 'cols' => 40, ),
-			'healthInsurancePolicy'			=> array ('rows' => 3, 'cols' => 40, ),
-			'travelInsuranceProvider'		=> array ('rows' => 3, 'cols' => 40, ),
-			'travelInsurancePolicy'			=> array ('rows' => 3, 'cols' => 40, ),
-			'equipmentInsuranceProvider'	=> array ('rows' => 3, 'cols' => 40, ),
-			'equipmentInsurancePolicy'		=> array ('rows' => 3, 'cols' => 40, ),
-		);
-		
-		# Add in maxlength checking on some fields and give nicer titles (done here to save adding these tediously to each database comment)
-		for ($i = 1; $i <= $this->hazardRows; $i++) {
-			$dataBindingAttributes["hazard{$i}_description"]['maxlength'] = 350;
-			$dataBindingAttributes["hazard{$i}_risks"]['maxlength'] = 350;
-			$dataBindingAttributes["hazard{$i}_reduction"]['maxlength'] = 350;
-			$dataBindingAttributes["hazard{$i}_person"]['maxlength'] = 350;
-		}
-		for ($i = 1; $i <= $this->equipmentRows; $i++) {
-			$dataBindingAttributes["equipment{$i}_name"]['maxlength'] = 350;
-			$dataBindingAttributes["equipment{$i}_transportation"]['maxlength'] = 350;
-			$dataBindingAttributes["equipment{$i}_security"]['maxlength'] = 350;
-		}
-		
-		# Return the modified definition
-		return $dataBindingAttributes;
-	}
-	
-	
-	# Overrideable function to set the required fields for the local section dataBinding
-	public function formLocalRequiredFields ($formLocalRequiredFields, $data)
-	{
-		# Ignore (reset) the standard definition (all fields, with ...Details handling)
-		$formLocalRequiredFields = array ();
-		
-		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
-		$formLocalRequiredFields = array (
-			'description', 'type', 'college', 'seniorPerson',
-			'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst',
-			'insurance',
-			'stayingAddress', 'stayingPhone', 'travellingWith', 'riskChartChecked', 'riskLevel',
-			'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation',
-		);
-		
-		# Return the modified definition
-		return $formLocalRequiredFields;
-	}
-	
-	
-	# Overrideable function to amend the exclude fields for the local section dataBinding
-	public function formLocalExcludeFields ($localExcludeFields, $data)
-	{
-		# Determine fields to exclude
-		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
-		if (!$stage2InfoRequired) {
-			$stage2Fields = array (
-				'customsCountry1', 'customsDocument1',
-				'customsCountry2', 'customsDocument2',
-				'customsCountry3', 'customsDocument3',
-				'healthInsuranceProvider', 'healthInsurancePolicy',
-				'travelInsuranceProvider', 'travelInsurancePolicy',
-				'equipmentInsuranceProvider', 'equipmentInsurancePolicy',
-			);
-			$localExcludeFields = array_merge ($localExcludeFields, $stage2Fields);
-		}
-		
-		# Return the list
-		return $localExcludeFields;
-	}
-	
-	
-	# Overrideable function to enable form validation rules to be added
-	public function formValidationRules ($form, $data)
-	{
-		# Chained validation for the hazard/equipment matrix and customs/insurance
-		for ($i = 1; $i <= $this->hazardRows; $i++) {
-			$form->validation ('all', array (
-				"hazard{$i}_description",
-				"hazard{$i}_risks",
-				"hazard{$i}_likelihood",
-				"hazard{$i}_reduction",
-				"hazard{$i}_person"
-			));
-		}
-		for ($i = 1; $i <= $this->equipmentRows; $i++) {
-			$form->validation ('all', array (
-				"equipment{$i}_name",
-				"equipment{$i}_value",
-				"equipment{$i}_transportation",
-				"equipment{$i}_insurance",
-				"equipment{$i}_risk",
-				"equipment{$i}_security"
-			));
-		}
-		
-		# Linked customs fields
-		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
-		if ($stage2InfoRequired) {
-			$form->validation ('all', array ('customsCountry1', 'customsDocument1'));
-			$form->validation ('all', array ('customsCountry2', 'customsDocument2'));
-			$form->validation ('all', array ('customsCountry3', 'customsDocument3'));
-			$form->validation ('all', array ('healthInsuranceProvider', 'healthInsurancePolicy'));
-			$form->validation ('all', array ('travelInsuranceProvider', 'travelInsurancePolicy'));
-			$form->validation ('all', array ('equipmentInsuranceProvider', 'equipmentInsurancePolicy'));
-			$form->validation ('either', array ('healthInsuranceProvider', 'travelInsuranceProvider', 'equipmentInsuranceProvider'));
-		}
-		
-		# Return the modified form object
-		return $form;
-	}
-	
-	
 	# Function to define the asssessment form template
 	public function formTemplateLocal ($data, $watermark)
 	{
@@ -438,6 +291,153 @@ class riskAssessments extends reviewableAssessments
 		
 		# Return the HTML
 		return $html;
+	}
+	
+	
+	# Overrideable function to amend the main form attributes
+	public function formMainAttributes ($formMainAttributes)
+	{
+		$formMainAttributes['cols'] = 25;
+		$formMainAttributes['rows'] = 3;
+		//$formMainAttributes['size'] = 25;
+		//$formMainAttributes['picker'] = true;
+		
+		# Return modified version
+		return $formMainAttributes;
+	}
+	
+	
+	# Function to add elements to the dataBinding
+	public function formDataBindingAttributes ($dataBindingAttributes, $data)
+	{
+		# Set whether the form should include the customs/insurance fields
+		$stage2InfoRequired = ($data['stage2InfoRequired']);
+		
+		# Add to the attributes
+		$dataBindingAttributes += array (
+			'country'						=> array ('type' => 'select', 'values' => $this->getCountries (), ),
+			'originCountry'					=> array ('type' => 'select', 'values' => $this->getCountries (), ),
+			'place'							=> array ('rows' => 4, 'cols' => 50, ),
+			'activity'						=> array ('rows' => 4, 'cols' => 50, ),
+			'when'							=> array ('cols' => 50, ),
+			'organicMaterial'				=> array ('type' => 'radiobuttons', 'values' => array ('No' => 'No', 'Yes' => 'Yes, and I will obtain a foreign soils licence held by the Department and will comply with all relevant regulations.'), ),
+			'fcoWebsiteChecked'				=> array ('type' => 'radiobuttons', ),
+			'fcoAdviseAgainst'				=> array ('type' => 'radiobuttons', 'values' => array ('No' => 'No', 'Yes' => 'Yes - see note below'), ),
+			'stayingAddress'				=> array ('rows' => 4, 'cols' => 50, ),
+			'travellingWith'				=> array ('rows' => 5, 'cols' => 50, ),
+			'hazard1_description'			=> array ('default' => 'Travel', 'editable' => false, ),
+			'customsCountry1'				=> array ('type' => 'select', 'values' => $this->getCountries (), 'required' => $stage2InfoRequired, ),
+			'customsDocument1'				=> array ('rows' => 4, 'cols' => 50, 'required' => $stage2InfoRequired, ),
+			'customsCountry2'				=> array ('type' => 'select', 'values' => $this->getCountries (), ),
+			'customsDocument2'				=> array ('rows' => 4, 'cols' => 50, ),
+			'customsCountry3'				=> array ('type' => 'select', 'values' => $this->getCountries (), ),
+			'customsDocument3'				=> array ('rows' => 4, 'cols' => 50, ),
+			'healthInsuranceProvider'		=> array ('rows' => 3, 'cols' => 40, ),
+			'healthInsurancePolicy'			=> array ('rows' => 3, 'cols' => 40, ),
+			'travelInsuranceProvider'		=> array ('rows' => 3, 'cols' => 40, ),
+			'travelInsurancePolicy'			=> array ('rows' => 3, 'cols' => 40, ),
+			'equipmentInsuranceProvider'	=> array ('rows' => 3, 'cols' => 40, ),
+			'equipmentInsurancePolicy'		=> array ('rows' => 3, 'cols' => 40, ),
+		);
+		
+		# Add in maxlength checking on some fields and give nicer titles (done here to save adding these tediously to each database comment)
+		for ($i = 1; $i <= $this->hazardRows; $i++) {
+			$dataBindingAttributes["hazard{$i}_description"]['maxlength'] = 350;
+			$dataBindingAttributes["hazard{$i}_risks"]['maxlength'] = 350;
+			$dataBindingAttributes["hazard{$i}_reduction"]['maxlength'] = 350;
+			$dataBindingAttributes["hazard{$i}_person"]['maxlength'] = 350;
+		}
+		for ($i = 1; $i <= $this->equipmentRows; $i++) {
+			$dataBindingAttributes["equipment{$i}_name"]['maxlength'] = 350;
+			$dataBindingAttributes["equipment{$i}_transportation"]['maxlength'] = 350;
+			$dataBindingAttributes["equipment{$i}_security"]['maxlength'] = 350;
+		}
+		
+		# Return the modified definition
+		return $dataBindingAttributes;
+	}
+	
+	
+	# Overrideable function to set the required fields for the local section dataBinding
+	public function formLocalRequiredFields ($formLocalRequiredFields, $data)
+	{
+		# Ignore (reset) the standard definition (all fields, with ...Details handling)
+		$formLocalRequiredFields = array ();
+		
+		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
+		$formLocalRequiredFields = array (
+			'description', 'type', 'college', 'seniorPerson',
+			'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst',
+			'insurance',
+			'stayingAddress', 'stayingPhone', 'travellingWith', 'riskChartChecked', 'riskLevel',
+			'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation',
+		);
+		
+		# Return the modified definition
+		return $formLocalRequiredFields;
+	}
+	
+	
+	# Overrideable function to amend the exclude fields for the local section dataBinding
+	public function formLocalExcludeFields ($localExcludeFields, $data)
+	{
+		# Determine fields to exclude
+		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
+		if (!$stage2InfoRequired) {
+			$stage2Fields = array (
+				'customsCountry1', 'customsDocument1',
+				'customsCountry2', 'customsDocument2',
+				'customsCountry3', 'customsDocument3',
+				'healthInsuranceProvider', 'healthInsurancePolicy',
+				'travelInsuranceProvider', 'travelInsurancePolicy',
+				'equipmentInsuranceProvider', 'equipmentInsurancePolicy',
+			);
+			$localExcludeFields = array_merge ($localExcludeFields, $stage2Fields);
+		}
+		
+		# Return the list
+		return $localExcludeFields;
+	}
+	
+	
+	# Overrideable function to enable form validation rules to be added
+	public function formValidationRules ($form, $data)
+	{
+		# Chained validation for the hazard/equipment matrix and customs/insurance
+		for ($i = 1; $i <= $this->hazardRows; $i++) {
+			$form->validation ('all', array (
+				"hazard{$i}_description",
+				"hazard{$i}_risks",
+				"hazard{$i}_likelihood",
+				"hazard{$i}_reduction",
+				"hazard{$i}_person"
+			));
+		}
+		for ($i = 1; $i <= $this->equipmentRows; $i++) {
+			$form->validation ('all', array (
+				"equipment{$i}_name",
+				"equipment{$i}_value",
+				"equipment{$i}_transportation",
+				"equipment{$i}_insurance",
+				"equipment{$i}_risk",
+				"equipment{$i}_security"
+			));
+		}
+		
+		# Linked customs fields
+		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
+		if ($stage2InfoRequired) {
+			$form->validation ('all', array ('customsCountry1', 'customsDocument1'));
+			$form->validation ('all', array ('customsCountry2', 'customsDocument2'));
+			$form->validation ('all', array ('customsCountry3', 'customsDocument3'));
+			$form->validation ('all', array ('healthInsuranceProvider', 'healthInsurancePolicy'));
+			$form->validation ('all', array ('travelInsuranceProvider', 'travelInsurancePolicy'));
+			$form->validation ('all', array ('equipmentInsuranceProvider', 'equipmentInsurancePolicy'));
+			$form->validation ('either', array ('healthInsuranceProvider', 'travelInsuranceProvider', 'equipmentInsuranceProvider'));
+		}
+		
+		# Return the modified form object
+		return $form;
 	}
 }
 
