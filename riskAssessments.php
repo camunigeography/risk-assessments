@@ -31,34 +31,27 @@ class riskAssessments extends reviewableAssessments
 	
 	
 	
-	# Submission form logic - overrides base class
-	#!# Differences need to be converted to callbacks
-	public function submissionForm ($data)
+	# Overrideable function to amend the main form attributes
+	public function formMainAttributes ($formMainAttributes)
 	{
-		# Get the template
-		$template = $this->formTemplate ($data);
+		$formMainAttributes['cols'] = 25;
+		$formMainAttributes['rows'] = 3;
+		//$formMainAttributes['size'] = 25;
+		//$formMainAttributes['picker'] = true;
 		
-		# Add form buttons to the template
-		$template = "\n<p><img src=\"/images/icons/information.png\" alt=\"\" class=\"icon\" /> You can click on {[[SAVE]]} at any time.</p>" . "\n{[[PROBLEMS]]}" . $template . "\n<p>{[[SUBMIT]]} OR you can {[[SAVE]]}</p>";
-		
-		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
-		$genericFields = array ('description', 'name', 'email', 'type', 'college', 'seniorPerson', 'confirmation', );
-		
-		# Determine the widget to be used for the senior person field
-		$seniorPerson = $this->seniorPersonAttributes ($data['type'], $data['username']);
-		
+		# Return modified version
+		return $formMainAttributes;
+	}
+	
+	
+	# Function to add elements to the dataBinding
+	public function formDataBindingAttributes ($dataBindingAttributes, $data)
+	{
 		# Set whether the form should include the customs/insurance fields
 		$stage2InfoRequired = ($data['stage2InfoRequired']);
 		
-		# Compile the dataBinding attributes
-		$dataBindingAttributes = array (
-			'description'					=> array ('size' => 70, 'maxlength' => 130),	#!# Reduce to 80
-			'name'							=> array ('editable' => false, ),
-			'email'							=> array ('editable' => false, ),
-			'type'							=> array ('type' => 'radiobuttons', 'disabled' => true, ),
-			'college'						=> array ('type' => 'select', 'values' => $this->getColleges (), ),
-			'seniorPerson' 					=> $seniorPerson['widget'],
-			'contactAddress'				=> array ('rows' => 4, 'cols' => 50, ),
+		# Add to the attributes
+		$dataBindingAttributes += array (
 			'country'						=> array ('type' => 'select', 'values' => $this->getCountries (), ),
 			'originCountry'					=> array ('type' => 'select', 'values' => $this->getCountries (), ),
 			'place'							=> array ('rows' => 4, 'cols' => 50, ),
@@ -90,82 +83,86 @@ class riskAssessments extends reviewableAssessments
 			$dataBindingAttributes["hazard{$i}_risks"]['maxlength'] = 350;
 			$dataBindingAttributes["hazard{$i}_reduction"]['maxlength'] = 350;
 			$dataBindingAttributes["hazard{$i}_person"]['maxlength'] = 350;
-			$dataBindingAttributes["hazard{$i}_description"]['title'] = "Hazard {$i} description";
-			$dataBindingAttributes["hazard{$i}_risks"]['title'] = "Hazard {$i} risks";
-			$dataBindingAttributes["hazard{$i}_likelihood"]['title'] = "Hazard {$i} likelihood";
-			$dataBindingAttributes["hazard{$i}_reduction"]['title'] = "Hazard {$i} reduction";
-			$dataBindingAttributes["hazard{$i}_person"]['title'] = "Hazard {$i} person";
 		}
 		for ($i = 1; $i <= $this->equipmentRows; $i++) {
 			$dataBindingAttributes["equipment{$i}_name"]['maxlength'] = 350;
 			$dataBindingAttributes["equipment{$i}_transportation"]['maxlength'] = 350;
 			$dataBindingAttributes["equipment{$i}_security"]['maxlength'] = 350;
-			$dataBindingAttributes["equipment{$i}_name"]['title'] = "Equipment {$i} name";
-			$dataBindingAttributes["equipment{$i}_value"]['title'] = "Equipment {$i} value";
-			$dataBindingAttributes["equipment{$i}_transportation"]['title'] = "Equipment {$i} transportation";
-			$dataBindingAttributes["equipment{$i}_insurance"]['title'] = "Equipment {$i} insurance";
-			$dataBindingAttributes["equipment{$i}_risk"]['title'] = "Equipment {$i} risk";
-			$dataBindingAttributes["equipment{$i}_security"]['title'] = "Equipment {$i} security";
 		}
 		
-		# Determine fields to exclude
-		$exclude = $this->internalFields;
-		if (!$stage2InfoRequired) {
-			$stage2Fields = array ('customsCountry1', 'customsDocument1', 'customsCountry2', 'customsDocument2', 'customsCountry3', 'customsDocument3', 'healthInsuranceProvider', 'healthInsurancePolicy', 'travelInsuranceProvider', 'travelInsurancePolicy', 'equipmentInsuranceProvider', 'equipmentInsurancePolicy');
-			$exclude = array_merge ($exclude, $stage2Fields);
-		}
+		# Return the modified definition
+		return $dataBindingAttributes;
+	}
+	
+	
+	# Overrideable function to set the required fields for the local section dataBinding
+	public function formLocalRequiredFields ($formLocalRequiredFields, $data)
+	{
+		# Ignore (reset) the standard definition (all fields, with ...Details handling)
+		$formLocalRequiredFields = array ();
 		
 		# Define the database fields that should be treated as NOT NULL when doing a full submission (rather than "Save and continue"), even though the database sets them as NULLable; this is done manually so that the "Save and continue" button is possible
-		$notNullFields = array ('description', 'type', 'college', 'seniorPerson', 'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst', 'insurance', 'stayingAddress', 'stayingPhone', 'travellingWith', 'riskChartChecked', 'riskLevel', 'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation', );
-/* differences end here */
+		$formLocalRequiredFields = array (
+			'description', 'type', 'college', 'seniorPerson',
+			'contactName', 'contactAddress', 'contactPhone', 'country', 'originCountry', 'travelModes', 'travelPolicyAwareness', 'travelPolicyAccountedFor', 'place', 'activity', 'when', 'organicMaterial', 'fcoWebsiteChecked', 'fcoAdviseAgainst',
+			'insurance',
+			'stayingAddress', 'stayingPhone', 'travellingWith', 'riskChartChecked', 'riskLevel',
+			'hazard1_description', 'hazard1_risks', 'hazard1_likelihood', 'hazard1_reduction', 'hazard1_person', 'confirmation',
+		);
 		
-		# Databind a form
-		$form = new form (array (
-			'databaseConnection' => $this->databaseConnection,
-			'nullText' => false,
-			'formCompleteText'	=> false,
-			'display' => 'template',
-			'displayTemplate' => $template,
-			'size' => 60,
-			'cols' => 25,
-			'rows' => 3,
-			'unsavedDataProtection' => true,
-			'saveButton' => true,
-			'div' => false,
-		));
+		# Return the modified definition
+		return $formLocalRequiredFields;
+	}
+	
+	
+	# Overrideable function to amend the exclude fields for the local section dataBinding
+	public function formLocalExcludeFields ($localExcludeFields, $data)
+	{
+		# Determine fields to exclude
+		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
+		if (!$stage2InfoRequired) {
+			$stage2Fields = array (
+				'customsCountry1', 'customsDocument1',
+				'customsCountry2', 'customsDocument2',
+				'customsCountry3', 'customsDocument3',
+				'healthInsuranceProvider', 'healthInsurancePolicy',
+				'travelInsuranceProvider', 'travelInsurancePolicy',
+				'equipmentInsuranceProvider', 'equipmentInsurancePolicy',
+			);
+			$localExcludeFields = array_merge ($localExcludeFields, $stage2Fields);
+		}
 		
-		#!# This needs to disable native required="required" handling, as that prevents true "Save and continue later"
-		
-		# Start with core fields, e.g. description, name, etc.
-		$form->dataBinding (array (
-			'database' => $this->settings['database'],
-			'table' => $this->settings['table'],
-			'data' => $data,
-			'intelligence' => true,
-			'exclude' => $this->internalFields,
-			'attributes' => $dataBindingAttributes,
-			'notNullFields' => $genericFields,
-			'int1ToCheckbox' => true,
-		));
-		
-		# Add local fields
-		$form->dataBinding (array (
-			'schema' => $this->localFields,			// Populated in getTemplateLocal ()
-			'data'	=> $data,
-			'intelligence' => true,					// Handles foo/fooDetails pairs
-			'exclude' => $exclude,
-			'attributes' => $dataBindingAttributes,
-			'notNullFields' => $notNullFields,
-			'int1ToCheckbox' => true,
-		));
-		
+		# Return the list
+		return $localExcludeFields;
+	}
+	
+	
+	# Overrideable function to enable form validation rules to be added
+	public function formValidationRules ($form, $data)
+	{
 		# Chained validation for the hazard/equipment matrix and customs/insurance
 		for ($i = 1; $i <= $this->hazardRows; $i++) {
-			$form->validation ('all', array ("hazard{$i}_description", "hazard{$i}_risks", "hazard{$i}_likelihood", "hazard{$i}_reduction", "hazard{$i}_person"));
+			$form->validation ('all', array (
+				"hazard{$i}_description",
+				"hazard{$i}_risks",
+				"hazard{$i}_likelihood",
+				"hazard{$i}_reduction",
+				"hazard{$i}_person"
+			));
 		}
 		for ($i = 1; $i <= $this->equipmentRows; $i++) {
-			$form->validation ('all', array ("equipment{$i}_name", "equipment{$i}_value", "equipment{$i}_transportation", "equipment{$i}_insurance", "equipment{$i}_risk", "equipment{$i}_security"));
+			$form->validation ('all', array (
+				"equipment{$i}_name",
+				"equipment{$i}_value",
+				"equipment{$i}_transportation",
+				"equipment{$i}_insurance",
+				"equipment{$i}_risk",
+				"equipment{$i}_security"
+			));
 		}
+		
+		# Linked customs fields
+		$stage2InfoRequired = ($data['stage2InfoRequired']);	# Whether the form should include the customs/insurance fields
 		if ($stage2InfoRequired) {
 			$form->validation ('all', array ('customsCountry1', 'customsDocument1'));
 			$form->validation ('all', array ('customsCountry2', 'customsDocument2'));
@@ -176,7 +173,7 @@ class riskAssessments extends reviewableAssessments
 			$form->validation ('either', array ('healthInsuranceProvider', 'travelInsuranceProvider', 'equipmentInsuranceProvider'));
 		}
 		
-		# Return the form handle
+		# Return the modified form object
 		return $form;
 	}
 	
