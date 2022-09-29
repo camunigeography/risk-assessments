@@ -1,6 +1,6 @@
 <?php
 
-# Class implementing a risk assessment system
+# Risk form
 class riskAssessments_form_default
 {
 	# Function to assign defaults additional to the general application defaults
