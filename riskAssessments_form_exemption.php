@@ -32,9 +32,13 @@ class riskAssessments_form_exemption
 			<h3>Exemption from risk assessment</h3>
 			<p>Any travel or activity <strong>outside of Cambridge</strong> associated with your course of study &ndash; regardless of duration &ndash; requires completion of a risk assessment.</p>
 			<p>Any activity associated with your course <strong>within Cambridge</strong> that involves a higher level of risk than your usual day to day activity as a student requires completion of a risk assessment. This would include conducting interviews for research or similar activity which you would otherwise not carry out in the course of a normal day.</p>
+			
 			<h3>Reason</h3>
 			<p>If you believe that you do not require a risk assessment, please complete this form; it will be sent to your supervisor for them to sign and confirm that you do not need to complete an assessment (or, in the event that they disagree, will be returned to you with comments and information on the next steps).</p>
 			<p>Reasons why a risk assessment is not required:<br />{reason|mediumtext|Reason}</p>
+			
+			<h3>Confirmation</h3>
+			<p>{confirmation} I confirm the above is correct.</p>
 		';
 		
 		# Return the HTML
