@@ -25,8 +25,6 @@ class riskAssessments_form_groupactivity
 	# Function to define the asssessment form template
 	public function form_groupactivity ($data, $watermark)
 	{
-		$this->hazardRows = 8;
-		
 		# Form HTML
 		$html = "
 			<p><img src=\"/images/icons/exclamation.png\" alt=\"!\" class=\"icon\" /> Before filling this out, you <strong>must</strong> read and be aware of the <a href=\"/general/sustainability/travelpolicy/\" target=\"_blank\">Department Travel Policy</a> before making your plans for this trip.</p>
@@ -48,13 +46,13 @@ class riskAssessments_form_groupactivity
 			<p>What country are you going to?<br />{country}</p>
 			<p>What is your country of origin? (E.g. where are you travelling from)<br />{originCountry}</p>
 			<p>What mode(s) of travel will you be using?<br />{travelModes}</p>
-			<p>Are you aware of the <a href=\"https://intranet.geog.cam.ac.uk/general/sustainability/travelpolicy/\" target=\"_blank\" title=\"[Link opens in a new window]\">Department Travel Policy</a>?<br />{travelPolicyAwareness}</p>
+			<p>Are you aware of the <a href=\"https://intranet.geog.cam.ac.uk/general/sustainability/travelpolicy/\" target=\"_blank\" title=\"[Link opens in a new window]\">Department Travel Policy</a>?<br />{travelPolicyAwareness|enum('','Yes','No')|Travel policy awareness}</p>
 			<p>Have you taken account of the Travel Policy when making your plans for this trip?<br />{travelPolicy|enum('','Yes','No')|Travel policy}</p>
 			<p>Where are you going?<br />{location}</p>
 			<p>What will you be doing there?<br />{activities|mediumtext|Activities}</p>
 			<p>When will you be there?<br />{when}</p>
-			<p>Will your project involve importing foreign soil and/or plant material?<br />{soils}</p>
-			<p>Have you checked the <a href=\"https://www.gov.uk/foreign-travel-advice\" target=\"_blank\" title=\"[Link opens in a new window]\">FCDO website</a>?<br />{fcdoWebsite|enum('','Yes','No')|FCDO website}</p>
+			<p>Will your project involve importing foreign soil and/or plant material?<br />{soils|enum('','Yes','No')|Soils}</p>
+			<p>Have you checked the <a href=\"https://www.gov.uk/foreign-travel-advice\" target=\"_blank\" title=\"[Link opens in a new window]\">FCDO website</a>?<br />{fcdoChecked|enum('','Yes','No')|FCDO website}</p>
 			<p>Does the FCDO advise against any travel to your intended destination?<br />{fcdoWarning|enum('','Yes','No')|FCDO warning}</p>
 			
 			<h3>Insurance</h3>
@@ -145,6 +143,9 @@ class riskAssessments_form_groupactivity
 		
 		$html .= '
 		</table>
+		
+		<h3>Confirmation</h3>
+		<p>{confirmation} I confirm the above is correct.</p>
 		';
 		
 		# Return the HTML
@@ -200,6 +201,25 @@ class riskAssessments_form_groupactivity
 	# Overrideable function to set the required fields for the local section dataBinding
 	public function form_groupactivity_localRequiredFields ($formLocalRequiredFields, $data)
 	{
+		# Remove optional fields
+		$optionalFields = array ();
+		for ($i = 2; $i <= $this->hazardRows; $i++) {		// Omit 1st
+			$optionalFields[] = "hazard{$i}Description";
+			$optionalFields[] = "hazard{$i}Risks";
+			$optionalFields[] = "hazard{$i}Likelihood";
+			$optionalFields[] = "hazard{$i}Reduction";
+			$optionalFields[] = "hazard{$i}Person";
+		}
+		for ($i = 1; $i <= $this->equipmentRows; $i++) {
+			$optionalFields[] = "equipment{$i}Name";
+			$optionalFields[] = "equipment{$i}Value";
+			$optionalFields[] = "equipment{$i}Transportation";
+			$optionalFields[] = "equipment{$i}Insurance";
+			$optionalFields[] = "equipment{$i}Risk";
+			$optionalFields[] = "equipment{$i}Security";
+		}
+
+		$formLocalRequiredFields = array_diff ($formLocalRequiredFields, $optionalFields);
 		
 		
 		# Return the modified definition
