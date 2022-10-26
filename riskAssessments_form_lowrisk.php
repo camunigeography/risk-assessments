@@ -32,7 +32,7 @@ class riskAssessments_form_lowrisk
 			<p><img src=\"/images/icons/exclamation.png\" alt=\"!\" class=\"icon\" /> Before filling this out, you <strong>must</strong> read and be aware of the <a href=\"/general/sustainability/travelpolicy/\" target=\"_blank\">Department Travel Policy</a> before making your plans for this trip.</p>
 			
 			<h3>Activity</h3>
-			<p>Description of travel and/or work away:<br />{activity|mediumtext|Description}</p>
+			<p>Description of travel and/or work away, including arrangements and locations for interviews, location visits etc. If you will be conducting interviews alone, you should give details of how you will ensure your safety, for example, by sharing your itinerary with a responsible person.<br />{activity|mediumtext|Description}</p>
 			<p>Location(s) of activity:<br />{location}</p>
 			
 			<h3>Dates* of travel/work away (*or range of dates for repeat visits)</h3>

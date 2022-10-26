@@ -138,9 +138,10 @@ class riskAssessments extends reviewableAssessments
 			'title'		=> '5. What are you going to be doing?',
 			'values'	=> array (
 				'a_result_lowrisk' => 'Conducting non-practical work such as desk work, attendance at a seminar, conference or exhibition held in a controlled environment.<br />',
-				'b_result_mediumrisk' => 'Conducting practical work (field visits, work in a lab, work in a remote area), and/or an activity where permits/licenses are required (mountaineering, diving, archaeological dig), where the individual is accompanied by a professional guide, or any other work/research that requires the traveller to complete a standard ethics assessment.<br />',
-				'c_result_highrisk' => 'Conducting lone practical work in an area of high risk (field visits, work in a lab, work in a remote area), or an activity where permits/licenses are required (mountaineering, diving) and will not be accompanied by a professional guide.<br />',
-				'd_result_highrisk' => 'Researching a highly sensitive/controversial topic that could potentially put you in danger.',
+				'b_result_lowrisk' => 'Standard fieldwork, including interviews, location visits, accessing archives, etc.<br />',
+				'c_result_mediumrisk' => 'Conducting practical work (field visits, work in a lab, work in a remote area), and/or an activity where permits/licenses are required (mountaineering, diving, archaeological dig), where the individual is accompanied by a professional guide, or any other work/research that requires the traveller to complete a standard ethics assessment.<br />',
+				'd_result_highrisk' => 'Conducting lone practical work in an area of high risk (field visits, work in a lab, work in a remote area), or an activity where permits/licenses are required (mountaineering, diving) and will not be accompanied by a professional guide.<br />',
+				'e_result_highrisk' => 'Researching a highly sensitive/controversial topic that could potentially put you in danger.',
 			),
 			'entities' => false,
 			'discard' => true,
