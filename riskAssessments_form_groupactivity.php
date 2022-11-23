@@ -38,6 +38,8 @@ class riskAssessments_form_groupactivity
 			<p>Does the Department have a copy of these contact details stored as backup?<br />{emergencyContactsBackup|enum('','Yes','No')|Emergency contacts backup}</p>
 			
 			<h3>Details of First Aid provision</h3>
+			<p>First Aid provision is a <strong>requirement</strong> for group activities.</p>
+			<p>I confirm that I have arranged First Aid cover for this trip.<br />{firstAid|tinyint|First Aid cover}</p>
 			<p>Please enter the names of any First Aiders accompanying the trip:<br />{firstAiders|mediumtext|First Aiders}</p>
 			<p>Please enter details of any First Aid provisions you are making (e.g. First Aiders attending the trip, taking First Aid supplies with you):<br />{firstAidProvisions|mediumtext|First Aid provisions}</p>
 			<p>If attending a field site, what First Aid provisions are available on site?<br />{firstAidOnSite|mediumtext|First Aid on site}</p>
