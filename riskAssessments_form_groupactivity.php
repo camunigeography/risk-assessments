@@ -111,6 +111,7 @@ class riskAssessments_form_groupactivity
 			
 			<h3>Section C: Equipment risk analysis</h3>
 			<p>Please make a <em>provisional</em> return here if you hope to borrow items of Departmental field equipment. If the equipment has a value of under &pound;100 you do not need to list it here.</p>
+			<p>More information about <a href=\"/facilities/laboratories/loan/\" target=\"_blank\" title=\"[Link opens in a new window]\">borrowing Departmental equipment</a> is available.</p>
 			
 		<table class=\"lines\">
 			<tr>
