@@ -128,7 +128,7 @@ class riskAssessments extends reviewableAssessments
 				'a_goto7' => 'Traveller has relevant experience, understanding and skills for the work proposed<br />',
 				'b_goto7' => 'Traveller has personal characteristics (e.g. health, disability, pregnancy, language, ethnic, religious, protected characteristics or cultural factors) that may require specific adjustments or support during work, or because of living away from home.<br />',
 				'c_goto7' => 'Traveller has personal characteristics (e.g. health, disability, pregnancy, language, ethnic, religious, protected characteristics or cultural factors) that could significantly increase their vulnerability to certain risks.<br />',
-				'd_goto7' => 'Traveller does not have experience of conducting a higher risk activity or working in a higher risk location.',
+				'd_goto7' => 'Traveller will be conducting a higher risk activity or working in a higher risk location and does not have prior experience.',
 			),
 			'entities' => false,
 			'discard' => true,
@@ -138,7 +138,7 @@ class riskAssessments extends reviewableAssessments
 			'title'		=> '5. What are you going to be doing?',
 			'values'	=> array (
 				'a_result_lowrisk' => 'Conducting non-practical work such as desk work, attendance at a seminar, conference or exhibition held in a controlled environment.<br />',
-				'b_result_lowrisk' => 'Standard fieldwork, including interviews, location visits, accessing archives, etc.<br />',
+				'b_result_mediumrisk' => 'Standard fieldwork, including interviews, location visits, accessing archives, etc. This does not include practical work.<br />',
 				'c_result_mediumrisk' => 'Conducting practical work (field visits, work in a lab, work in a remote area), and/or an activity where permits/licenses are required (mountaineering, diving, archaeological dig), where the individual is accompanied by a professional guide, or any other work/research that requires the traveller to complete a standard ethics assessment.<br />',
 				'd_result_highrisk' => 'Conducting lone practical work in an area of high risk (field visits, work in a lab, work in a remote area), or an activity where permits/licenses are required (mountaineering, diving) and will not be accompanied by a professional guide.<br />',
 				'e_result_highrisk' => 'Researching a highly sensitive/controversial topic that could potentially put you in danger.',
