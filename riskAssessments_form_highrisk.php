@@ -63,10 +63,6 @@ class riskAssessments_form_highrisk
 			
 			<h3>D. Foreign, Commonwealth and Development Office (FCDO) travel advice rating</h3>
 			<p>
-				Please select below to acknowledge correspondence with the University COVID helpdesk whilst planning this trip:<br />
-				{covidHelpdesk|enum('','Yes - I have contacted the COVID helpdesk and I am aware of testing and quarantine requirements for this destination','I am aware of testing and quarantine requirements from other resources','I do NOT know the testing and quarantine requirements for this destination')|COVID helpdesk}
-			</p>
-			<p>
 				Please select below the FCDO rating for the area that you will be travelling in/through or staying and working in:<br />
 				{fcdoRating|enum('','No specific rating given','See our travel advice before travelling','Advise against all but essential travel OR advise against all travel *')|FCDO rating}
 			</p>

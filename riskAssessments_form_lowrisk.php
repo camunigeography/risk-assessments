@@ -43,7 +43,6 @@ class riskAssessments_form_lowrisk
 			<p>The hazards and consequent risks of this activity are similar to what I encounter doing low risk work at Cambridge (e.g. office work, attending lectures). This is therefore a low risk activity. The statements below list the precautions I will take to avoid higher risks.</p>
 			<p>I will take reasonable precautions to avoid putting myself at risk, and:</p>
 			<ul class=\"spaced\">
-				<li>I will contact the COVID Helpdesk for guidance and information on COVID-19 testing and quarantine requirements for this trip. I will check and comply with all legal requirements imposed by the UK (or country of departure) and my destination.</li>
 				<li>I will follow the UK Foreign and Commonwealth Office (FCDO) Travel Advice. I understand that this risk assessment is suitable only for travel to countries with the same levels of safety as the UK.</li>
 				<li>I will use a regular mode of travel provided by a reputable company" . ($isStudent ? ' (through the University&#39;s travel agent if possible)' : '') . ', allowing adequate travel time to avoid unnecessary risks.</li>
 				<li>I will not travel if adverse weather, natural disaster or civil disturbance is indicated.</li>
