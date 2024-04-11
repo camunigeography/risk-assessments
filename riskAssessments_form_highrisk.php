@@ -78,7 +78,7 @@ class riskAssessments_form_highrisk
 			<p>Relevant summary of the discussion:<br />{cultural|mediumtext|Cultural aspects}</p>
 			
 			<h3>F. Insurance</h3>
-			<p>Please give details of travel insurance that covers your travel/work away outside the UK:</p>
+			<p>Please give details of travel insurance. Note that if you are going outside the UK, this is mandatory, and you must use the University's portal to <a href=\"https://www.insurance.admin.cam.ac.uk/insurance-guidance/travel-insurance\" target=\"_blank\" title=\"[Link opens in a new window]\">register your trip</a> with insurance from the University's insurance provider (Allianz).</p>
 			<p>Name of insurer:<br />{insurerName}</p>
 			<p>Policy number:<br />{insurerPolicyNumber}</p>
 			

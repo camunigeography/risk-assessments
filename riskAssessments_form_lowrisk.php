@@ -47,6 +47,7 @@ class riskAssessments_form_lowrisk
 				<li>I will use a regular mode of travel provided by a reputable company" . ($isStudent ? ' (through the University&#39;s travel agent if possible)' : '') . ', allowing adequate travel time to avoid unnecessary risks.</li>
 				<li>I will not travel if adverse weather, natural disaster or civil disturbance is indicated.</li>
 				<li>I have read the University of Cambridge Travel Insurance Policy and am aware of all exclusions (including higher risk leisure activities).</li>
+				<li>If going overseas, I have been to the University\'s insurance provider (Allianz) portal to <a href="https://www.insurance.admin.cam.ac.uk/insurance-guidance/travel-insurance" target="_blank" title="[Link opens in a new window]">register the trip</a> and arranged for University travel insurance from this.</li>
 				<li>I will use accommodation providers as per University and departmental policy.</li>
 				<li>My itinerary and contact number have been posted with a departmental contact (e.g. Supervisor or Administrator).</li>
 				<li>I will follow the safety advice and guidance of the host organisation, and will report any safety concerns to the host organisation and/or to my department&#39;s management.</li>
