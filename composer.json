@@ -1,0 +1,13 @@
+{
+    "name": "camunigeography/risk-assessments",
+    "description": "Risk assessment system",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "stable",
+    "require": {
+        "camunigeography/reviewable-assessments": "^1.0"
+    },
+    "autoload": {
+        "files": ["riskAssessments.php"]
+    }
+}

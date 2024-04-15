@@ -1,7 +1,6 @@
 <?php
 
 # Class implementing a risk assessment system
-require_once ('reviewable-assessments/reviewableAssessments.php');
 class riskAssessments extends reviewableAssessments
 {
 	# Define forms available
@@ -54,6 +53,7 @@ class riskAssessments extends reviewableAssessments
 	public function main ()
 	{
 		# Load each form definition class
+		#!# Currently loaded manually
 		foreach ($this->forms as $form) {
 			$class = "riskAssessments_{$form}";
 			$file = $class . '.php';

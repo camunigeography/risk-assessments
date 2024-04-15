@@ -1,0 +1,17 @@
+
+# Apache httpd.conf extract providing URL routing and other directives
+
+#   Example usage in httpd.conf:
+#   
+#   # Risk assessments system
+#   Include /path/to/risk-assessments/.httpd.conf.extract.txt
+#   Use MacroRiskAssessments "/riskassessments" "/path/to/risk-assessments"
+
+
+<Macro MacroRiskAssessments $baseUrl $repoPath>
+	
+	# Load base codebase directives
+	Include $repoPath/vendor/camunigeography/reviewable-assessments/.httpd.conf.extract.txt
+	Use MacroReviewableAssessments "$baseUrl" "Risk assessments"
+	
+</Macro>

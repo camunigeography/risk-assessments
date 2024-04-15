@@ -2,7 +2,7 @@
 
 # Define the settings
 $settings = array (
-	'username' 				=> 'the_username',
+	'username'				=> 'the_username',
 	'password'				=> 'the_password',
 	'userCallback'			=> 'getUser',		// Defined below
 	'collegesCallback'		=> 'getColleges',	// Defined below
@@ -51,8 +51,8 @@ function getDosList ($databaseConnection)
 		
 		Array
 		(
-			[abc123] => Dr Anton Callahan <abc123>
-			[sqpr1] => Dr Steve Rex <sqpr1>
+			[abc123] => Prof Antonia Callahan <abc123>
+			[sqpr1] => Dr Stevie Rex <sqpr1>
 			...
 			[xyz1] => Dr Xavier Zachary <xyz1>
 		);
@@ -60,7 +60,7 @@ function getDosList ($databaseConnection)
 }
 
 # Load and run the risk assessments class, which implements the reviewable assessments class
-require_once ('reviewable-assessments-risk/riskAssessments.php');
+require_once ('vendor/autoload.php');
 new riskAssessments ($settings);
 
 ?>
