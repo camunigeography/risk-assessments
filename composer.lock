@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1117e7ad1823848ff18c2b8baa18fad",
+    "content-hash": "bbedaca9c85e618622fff1f31e69d736",
     "packages": [
         {
             "name": "camunigeography/camunidata",
@@ -44,16 +44,16 @@
         },
         {
             "name": "camunigeography/reviewable-assessments",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camunigeography/reviewable-assessments.git",
-                "reference": "c031660220f2be5129b71109bc343c0ec45259ea"
+                "reference": "3fdeff49ce65bcf04d0882e79b66827c5c57506f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/c031660220f2be5129b71109bc343c0ec45259ea",
-                "reference": "c031660220f2be5129b71109bc343c0ec45259ea",
+                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/3fdeff49ce65bcf04d0882e79b66827c5c57506f",
+                "reference": "3fdeff49ce65bcf04d0882e79b66827c5c57506f",
                 "shasum": ""
             },
             "require": {
@@ -76,9 +76,9 @@
             "description": "Reviewable assessments system (base application library)",
             "support": {
                 "issues": "https://github.com/camunigeography/reviewable-assessments/issues",
-                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.2"
+                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.3"
             },
-            "time": "2024-07-19T13:53:40+00:00"
+            "time": "2024-07-23T13:41:39+00:00"
         },
         {
             "name": "libpurecontent/application",
@@ -412,16 +412,16 @@
         },
         {
             "name": "libpurecontent/timedate",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/timedate.git",
-                "reference": "7560395e0f4ba6ed283f7f77508c9c36229d9e70"
+                "reference": "282ed1fdf024b5bae93cfb34896c331f0e43eb1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/timedate/zipball/7560395e0f4ba6ed283f7f77508c9c36229d9e70",
-                "reference": "7560395e0f4ba6ed283f7f77508c9c36229d9e70",
+                "url": "https://api.github.com/repos/libpurecontent/timedate/zipball/282ed1fdf024b5bae93cfb34896c331f0e43eb1a",
+                "reference": "282ed1fdf024b5bae93cfb34896c331f0e43eb1a",
                 "shasum": ""
             },
             "type": "library",
@@ -442,9 +442,9 @@
             "description": "PHP library timedate within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/timedate/issues",
-                "source": "https://github.com/libpurecontent/timedate/tree/v1.3.0"
+                "source": "https://github.com/libpurecontent/timedate/tree/v1.3.1"
             },
-            "time": "2024-01-15T17:06:17+00:00"
+            "time": "2024-07-23T11:59:53+00:00"
         },
         {
             "name": "libpurecontent/ultimateform",
