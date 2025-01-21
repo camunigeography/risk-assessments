@@ -4,10 +4,10 @@
     "type": "project",
     "license": "GPL-3.0-only",
     "minimum-stability": "stable",
-    "require": {
-        "camunigeography/reviewable-assessments": "^1.0.4"
-    },
     "autoload": {
         "files": ["riskAssessments.php"]
+    },
+    "require": {
+        "camunigeography/reviewable-assessments": "^1.0"
     }
 }
