@@ -44,16 +44,16 @@
         },
         {
             "name": "camunigeography/reviewable-assessments",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camunigeography/reviewable-assessments.git",
-                "reference": "de768e2a3fc19c8fed1391d4d538cef61ec2079e"
+                "reference": "f69e9a14d97dc2912b5a57f1f02d7a01af04259c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/de768e2a3fc19c8fed1391d4d538cef61ec2079e",
-                "reference": "de768e2a3fc19c8fed1391d4d538cef61ec2079e",
+                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/f69e9a14d97dc2912b5a57f1f02d7a01af04259c",
+                "reference": "f69e9a14d97dc2912b5a57f1f02d7a01af04259c",
                 "shasum": ""
             },
             "require": {
@@ -76,9 +76,9 @@
             "description": "Reviewable assessments system (base application library)",
             "support": {
                 "issues": "https://github.com/camunigeography/reviewable-assessments/issues",
-                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.5"
+                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.6"
             },
-            "time": "2025-01-21T17:40:05+00:00"
+            "time": "2025-03-11T15:02:34+00:00"
         },
         {
             "name": "libpurecontent/application",
