@@ -44,16 +44,16 @@
         },
         {
             "name": "camunigeography/reviewable-assessments",
-            "version": "v1.0.6",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camunigeography/reviewable-assessments.git",
-                "reference": "f69e9a14d97dc2912b5a57f1f02d7a01af04259c"
+                "reference": "e5c77cf570abc0aa488a3ce8606d53d9d5808c6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/f69e9a14d97dc2912b5a57f1f02d7a01af04259c",
-                "reference": "f69e9a14d97dc2912b5a57f1f02d7a01af04259c",
+                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/e5c77cf570abc0aa488a3ce8606d53d9d5808c6d",
+                "reference": "e5c77cf570abc0aa488a3ce8606d53d9d5808c6d",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "libpurecontent/application": "^1.9",
                 "libpurecontent/csv": "^1.5",
                 "libpurecontent/frontcontrollerapplication": "^1.13.9",
-                "libpurecontent/ultimateform": "^1.29"
+                "libpurecontent/ultimateform": "^1.31"
             },
             "type": "library",
             "autoload": {
@@ -76,22 +76,22 @@
             "description": "Reviewable assessments system (base application library)",
             "support": {
                 "issues": "https://github.com/camunigeography/reviewable-assessments/issues",
-                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.6"
+                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.0.8"
             },
-            "time": "2025-03-11T15:02:34+00:00"
+            "time": "2025-04-14T15:19:15+00:00"
         },
         {
             "name": "libpurecontent/application",
-            "version": "v1.9.4",
+            "version": "v1.9.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/application.git",
-                "reference": "25d07579f95a713c4abf88f8eb8029d2949dd9ec"
+                "reference": "2b36edb97a6541ddc0d987f7b660311e63e51878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/application/zipball/25d07579f95a713c4abf88f8eb8029d2949dd9ec",
-                "reference": "25d07579f95a713c4abf88f8eb8029d2949dd9ec",
+                "url": "https://api.github.com/repos/libpurecontent/application/zipball/2b36edb97a6541ddc0d987f7b660311e63e51878",
+                "reference": "2b36edb97a6541ddc0d987f7b660311e63e51878",
                 "shasum": ""
             },
             "require": {
@@ -116,9 +116,9 @@
             "description": "PHP library application within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/application/issues",
-                "source": "https://github.com/libpurecontent/application/tree/v1.9.4"
+                "source": "https://github.com/libpurecontent/application/tree/v1.9.7"
             },
-            "time": "2024-06-04T17:05:26+00:00"
+            "time": "2025-04-02T18:26:07+00:00"
         },
         {
             "name": "libpurecontent/csv",
@@ -244,16 +244,16 @@
         },
         {
             "name": "libpurecontent/frontcontrollerapplication",
-            "version": "v1.13.9",
+            "version": "v1.13.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/frontcontrollerapplication.git",
-                "reference": "4e1cf5b82b59614e7ee3ce7ab9eb53b2953c62b8"
+                "reference": "7d6a3b9ddeae68033be3485f5b62e2ee004fc592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/frontcontrollerapplication/zipball/4e1cf5b82b59614e7ee3ce7ab9eb53b2953c62b8",
-                "reference": "4e1cf5b82b59614e7ee3ce7ab9eb53b2953c62b8",
+                "url": "https://api.github.com/repos/libpurecontent/frontcontrollerapplication/zipball/7d6a3b9ddeae68033be3485f5b62e2ee004fc592",
+                "reference": "7d6a3b9ddeae68033be3485f5b62e2ee004fc592",
                 "shasum": ""
             },
             "require": {
@@ -284,9 +284,9 @@
             "description": "PHP library frontControllerApplication within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/frontcontrollerapplication/issues",
-                "source": "https://github.com/libpurecontent/frontcontrollerapplication/tree/v1.13.9"
+                "source": "https://github.com/libpurecontent/frontcontrollerapplication/tree/v1.13.10"
             },
-            "time": "2025-01-21T17:34:00+00:00"
+            "time": "2025-03-05T16:51:54+00:00"
         },
         {
             "name": "libpurecontent/image",
@@ -448,20 +448,20 @@
         },
         {
             "name": "libpurecontent/ultimateform",
-            "version": "v1.29.7",
+            "version": "v1.31.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/ultimateform.git",
-                "reference": "4b0513bd7199d46fcd9f1e1e4cd494a18183b88d"
+                "reference": "fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/ultimateform/zipball/4b0513bd7199d46fcd9f1e1e4cd494a18183b88d",
-                "reference": "4b0513bd7199d46fcd9f1e1e4cd494a18183b88d",
+                "url": "https://api.github.com/repos/libpurecontent/ultimateform/zipball/fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c",
+                "reference": "fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c",
                 "shasum": ""
             },
             "require": {
-                "libpurecontent/application": "^1.9",
+                "libpurecontent/application": "^1.9.7",
                 "libpurecontent/database": "^4.2",
                 "libpurecontent/timedate": "^1.3"
             },
@@ -483,9 +483,9 @@
             "description": "PHP library ultimateForm within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/ultimateform/issues",
-                "source": "https://github.com/libpurecontent/ultimateform/tree/v1.29.7"
+                "source": "https://github.com/libpurecontent/ultimateform/tree/v1.31.1"
             },
-            "time": "2024-09-10T14:47:01+00:00"
+            "time": "2025-04-02T18:40:12+00:00"
         },
         {
             "name": "libpurecontent/useraccount",
