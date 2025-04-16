@@ -448,16 +448,16 @@
         },
         {
             "name": "libpurecontent/ultimateform",
-            "version": "v1.31.1",
+            "version": "v1.31.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/ultimateform.git",
-                "reference": "fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c"
+                "reference": "f81799002b9d01cb90e6f374fefec5273e152f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/ultimateform/zipball/fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c",
-                "reference": "fcf73ecadcf1ec2c4dd51887ea1ad336f6d4cb7c",
+                "url": "https://api.github.com/repos/libpurecontent/ultimateform/zipball/f81799002b9d01cb90e6f374fefec5273e152f75",
+                "reference": "f81799002b9d01cb90e6f374fefec5273e152f75",
                 "shasum": ""
             },
             "require": {
@@ -483,9 +483,9 @@
             "description": "PHP library ultimateForm within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/ultimateform/issues",
-                "source": "https://github.com/libpurecontent/ultimateform/tree/v1.31.1"
+                "source": "https://github.com/libpurecontent/ultimateform/tree/v1.31.2"
             },
-            "time": "2025-04-02T18:40:12+00:00"
+            "time": "2025-04-16T12:50:02+00:00"
         },
         {
             "name": "libpurecontent/useraccount",
