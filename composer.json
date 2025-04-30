@@ -8,6 +8,6 @@
         "files": ["riskAssessments.php"]
     },
     "require": {
-        "camunigeography/reviewable-assessments": "^1.0"
+        "camunigeography/reviewable-assessments": "^1.1"
     }
 }
