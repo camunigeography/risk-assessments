@@ -44,16 +44,16 @@
         },
         {
             "name": "camunigeography/reviewable-assessments",
-            "version": "v1.1.1",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camunigeography/reviewable-assessments.git",
-                "reference": "bb526fc3238375c03703d1799b77d80bb188781c"
+                "reference": "a0a2a78fd8db4f5d875597a91d208b4c93e512bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/bb526fc3238375c03703d1799b77d80bb188781c",
-                "reference": "bb526fc3238375c03703d1799b77d80bb188781c",
+                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/a0a2a78fd8db4f5d875597a91d208b4c93e512bd",
+                "reference": "a0a2a78fd8db4f5d875597a91d208b4c93e512bd",
                 "shasum": ""
             },
             "require": {
@@ -76,9 +76,9 @@
             "description": "Reviewable assessments system (base application library)",
             "support": {
                 "issues": "https://github.com/camunigeography/reviewable-assessments/issues",
-                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.1.1"
+                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.1.4"
             },
-            "time": "2025-05-01T15:46:51+00:00"
+            "time": "2025-10-17T15:51:12+00:00"
         },
         {
             "name": "composer/pcre",
