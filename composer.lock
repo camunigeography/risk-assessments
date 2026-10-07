@@ -44,16 +44,16 @@
         },
         {
             "name": "camunigeography/reviewable-assessments",
-            "version": "v1.1.6",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camunigeography/reviewable-assessments.git",
-                "reference": "fc8853540e76d7791d1cb009797e3866a91062de"
+                "reference": "7fde047efb1012544b32bbb7bae1144d9a78389b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/fc8853540e76d7791d1cb009797e3866a91062de",
-                "reference": "fc8853540e76d7791d1cb009797e3866a91062de",
+                "url": "https://api.github.com/repos/camunigeography/reviewable-assessments/zipball/7fde047efb1012544b32bbb7bae1144d9a78389b",
+                "reference": "7fde047efb1012544b32bbb7bae1144d9a78389b",
                 "shasum": ""
             },
             "require": {
@@ -77,9 +77,9 @@
             "description": "Reviewable assessments system (base application library)",
             "support": {
                 "issues": "https://github.com/camunigeography/reviewable-assessments/issues",
-                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.1.6"
+                "source": "https://github.com/camunigeography/reviewable-assessments/tree/v1.1.7"
             },
-            "time": "2026-10-06T13:18:00+00:00"
+            "time": "2026-10-07T15:05:04+00:00"
         },
         {
             "name": "libpurecontent/application",
@@ -166,16 +166,16 @@
         },
         {
             "name": "libpurecontent/database",
-            "version": "v4.4.3",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/database.git",
-                "reference": "96f8930c4f5f962203531533259074d86c3e5f00"
+                "reference": "3e2e83760ccbcd799bbbecc7428ec3839815f4f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/database/zipball/96f8930c4f5f962203531533259074d86c3e5f00",
-                "reference": "96f8930c4f5f962203531533259074d86c3e5f00",
+                "url": "https://api.github.com/repos/libpurecontent/database/zipball/3e2e83760ccbcd799bbbecc7428ec3839815f4f2",
+                "reference": "3e2e83760ccbcd799bbbecc7428ec3839815f4f2",
                 "shasum": ""
             },
             "require": {
@@ -201,9 +201,9 @@
             "description": "PHP library database within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/database/issues",
-                "source": "https://github.com/libpurecontent/database/tree/v4.4.3"
+                "source": "https://github.com/libpurecontent/database/tree/v4.4.4"
             },
-            "time": "2026-10-06T13:06:15+00:00"
+            "time": "2026-10-06T15:58:05+00:00"
         },
         {
             "name": "libpurecontent/directories",
