@@ -3,6 +3,11 @@
 # Class implementing a risk assessment system
 class riskAssessments extends reviewableAssessments
 {
+	# Class properties
+	private $formClasses;
+	
+	
+	
 	# Define forms available
 	public $forms = array (
 		'form_default',		// Legacy, not available for new assessments, as marked below

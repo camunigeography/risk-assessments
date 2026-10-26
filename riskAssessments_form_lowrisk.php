@@ -3,6 +3,10 @@
 # Risk form
 class riskAssessments_form_lowrisk
 {
+	# Class properties
+	private $settings;
+	
+	
 	# Function to assign defaults additional to the general application defaults
 	public function __construct ($settings)
 	{

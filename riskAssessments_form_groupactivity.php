@@ -3,6 +3,13 @@
 # Risk form
 class riskAssessments_form_groupactivity
 {
+	# Class properties
+	private $settings;
+	private $hazardRows;
+	private $equipmentRows;
+	
+	
+	
 	# Function to assign defaults additional to the general application defaults
 	public function __construct ($settings)
 	{

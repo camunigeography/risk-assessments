@@ -3,6 +3,13 @@
 # Risk form
 class riskAssessments_form_event
 {
+	# Class properties
+	private $settings;
+	private $hazardsTotal;
+	private $hazardSections;
+	
+	
+	
 	# Function to assign defaults additional to the general application defaults
 	public function __construct ($settings)
 	{
